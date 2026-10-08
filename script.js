@@ -146,6 +146,48 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     setupScrollObserver();
 
+    const settingsToggle = document.getElementById('settingsToggle');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeSettings = document.getElementById('closeSettings');
+    const saveSettingsBtn = document.getElementById('saveSettingsBtn');
+
+    // Função para abrir o painel
+    const openSettings = () => {
+        settingsModal.classList.add('active');
+        settingsModal.setAttribute('aria-hidden', 'false');
+    };
+
+    // Função para fechar o painel
+    const closeSettingsPanel = () => {
+        settingsModal.classList.remove('active');
+        settingsModal.setAttribute('aria-hidden', 'true');
+    };
+
+    // Ouvintes de eventos
+    if (settingsToggle) settingsToggle.addEventListener('click', openSettings);
+    if (closeSettings) closeSettings.addEventListener('click', closeSettingsPanel);
+
+    // Fecha o painel ao clicar fora da caixa do conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === settingsModal) closeSettingsPanel();
+    });
+
+    // Salva as configurações de programação no navegador
+    if (saveSettingsBtn) {
+        saveSettingsBtn.addEventListener('click', () => {
+            const apiUrl = document.getElementById('apiUrlInput').value.trim();
+            const maxCards = document.getElementById('maxCardsSelect').value;
+            const debugMode = document.getElementById('debugModeCheckbox').checked;
+
+            localStorage.setItem('metrica_api_url', apiUrl);
+            localStorage.setItem('metrica_max_cards', maxCards);
+            localStorage.setItem('metrica_debug', debugMode);
+
+            closeSettingsPanel();
+            window.location.reload(); // Recarrega a página para aplicar
+        });
+    }
+
     async function fetchMovies(url) {
         try {
             const response = await fetch(url, FETCH_OPTIONS);

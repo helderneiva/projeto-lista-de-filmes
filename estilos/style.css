@@ -422,3 +422,107 @@ body {
   height: 210px;
   }
 }
+
+.settings-modal {
+  display: none; 
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: calc(var(--z-tooltip) + 100);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Ativa o painel quando a classe for adicionada via JS */
+.settings-modal.active {
+  display: flex;
+}
+
+.settings-content {
+  background-color: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 25px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--borda);
+  padding-bottom: 10px;
+}
+
+.settings-header h2 {
+  font-family: var(--fonte-titulos);
+  font-size: 1.6em;
+  letter-spacing: 1px;
+  color: var(--destaque);
+  text-transform: uppercase;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--texto);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: var(--transicao);
+}
+
+.close-btn:hover {
+  color: var(--destaque);
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--texto);
+}
+
+.control-group input[type="text"],
+.control-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--borda);
+  background-color: var(--fundo-principal);
+  color: var(--texto);
+  font-family: var(--fonte-principal);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--destaque);
+  color: var(--texto-inverso);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicao);
+  margin-top: 10px;
+}
+
+.save-btn:hover {
+  background-color: var(--destaque-inverso);
+}

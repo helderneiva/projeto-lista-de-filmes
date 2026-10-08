@@ -58,6 +58,11 @@
                     <i class="fa-solid fa-star-and-crescent" aria-hidden="true"></i>
                 </button>
             </li>
+            <li>
+                <button type="button" class="nav-btn" id="settingsToggle" data-tooltip="Configurações" aria-label="Abrir configurações de programação">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                </button>
+            </li>
         </ul>
     </nav>
 
@@ -122,5 +127,39 @@
     </footer>
 
     <script src="script.js" type="module"></script>
+
+    <div id="settingsModal" class="settings-modal" aria-hidden="true" role="dialog" aria-labelledby="settingsTitle">
+  <div class="settings-content">
+    <header class="settings-header">
+      <h2 id="settingsTitle">Configurações de Programação</h2>
+      <button type="button" id="closeSettings" class="close-btn" aria-label="Fechar configurações">&times;</button>
+    </header>
+    
+    <div class="settings-body">
+      <div class="control-group">
+        <label for="apiUrlInput">URL Base da API:</label>
+        <input type="text" id="apiUrlInput" value="https://themoviedb.org">
+      </div>
+      
+      <div class="control-group">
+        <label for="maxCardsSelect">Máximo de Cards por Linha:</label>
+        <select id="maxCardsSelect">
+          <option value="4">4 Filmes</option>
+          <option value="8" selected>8 Filmes</option>
+          <option value="12">12 Filmes</option>
+        </select>
+      </div>
+
+      <div class="control-group checkbox-group">
+        <label>
+          <input type="checkbox" id="debugModeCheckbox"> Ativar Modo Debug no Console
+        </label>
+      </div>
+      
+      <button type="button" id="saveSettingsBtn" class="save-btn">Salvar Modificações</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
